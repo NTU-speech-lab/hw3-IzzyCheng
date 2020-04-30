@@ -86,9 +86,6 @@ class Classifier(nn.Module):
             nn.Conv2d(256, 256, 3, 1, 1),
             nn.BatchNorm2d(256),
             nn.ReLU(inplace=True),
-            nn.Conv2d(256, 256, 3, 1, 1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True),
             nn.MaxPool2d(2, 2, 0),      # [256, 16, 16]
 
             nn.Conv2d(256, 512, 3, 1, 1), # [512, 16, 16]
@@ -139,7 +136,7 @@ class Classifier(nn.Module):
 
 batch_size = 128
 model_best = Classifier().cuda()
-model_best.load_state_dict(torch.load('./CNN_22344.pth'))
+model_best.load_state_dict(torch.load('./CNN_22244.pth'))
 
 print('Start Testing...')
 test_set = ImgDataset(test_x, transform=test_transform)
