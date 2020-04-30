@@ -28,7 +28,7 @@ def readfile(path, label):
         return x
 
 workspace_dir = sys.argv[1]
-#val_x, val_y = readfile(os.path.join(workspace_dir, "validation"), True)
+val_x, val_y = readfile(os.path.join(workspace_dir, "validation"), True)
 test_x = readfile(os.path.join(workspace_dir, "testing"), False)
 print("Size of Testing data = {}".format(len(test_x)))
 
@@ -141,8 +141,8 @@ model_best.load_state_dict(torch.load('./CNN_22244.pth'))
 print('Start Testing...')
 test_set = ImgDataset(test_x, transform=test_transform)
 test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
-
-'''confusion matrix
+'''
+### confusion matrix
 val_set = ImgDataset(val_x, val_y, transform=test_transform)
 val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=False)
 
@@ -175,7 +175,7 @@ confusion=np.array(confusion,dtype=float)
 for idx in range(confusion.shape[0]):
     for idy in range(confusion.shape[0]):
         confusion[idx][idy]/=float(row_sums[idx])
-confusion = np.around(confusion,decimals=8)
+confusion = np.around(confusion,decimals=3)
 print(confusion)
 sns.heatmap(confusion, annot=True, cmap='Blues')
 plt.show()
