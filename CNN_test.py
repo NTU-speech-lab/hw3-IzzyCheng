@@ -8,8 +8,8 @@ import torchvision.transforms as transforms
 import pandas as pd
 from torch.utils.data import DataLoader, Dataset
 import time
-from sklearn.metrics import confusion_matrix
-import seaborn as sns
+#from sklearn.metrics import confusion_matrix
+#import seaborn as sns
 import matplotlib.pyplot as plt
 
 def readfile(path, label):
